@@ -82,8 +82,15 @@ class AllJobsSection extends Component {
   })
 
   getJobsData = async () => {
+    this.setState({apiStatus: apiStatusConstants.inProgress})
+
+    const {
+      activeEmploymentTypeId,
+      activeSalaryRangeId,
+      searchInput,
+    } = this.state
     const jwtToken = Cookies.get('jwt_token')
-    const allJobsApiUrl = 'https://apis.ccbp.in/jobs'
+    const allJobsApiUrl = `https://apis.ccbp.in/jobs?employment_type=${activeEmploymentTypeId}&minimum_package=${activeSalaryRangeId}&search=${searchInput}`
 
     const options = {
       headers: {
@@ -107,6 +114,20 @@ class AllJobsSection extends Component {
         apiStatus: apiStatusConstants.success,
       })
     }
+  }
+
+  enterSearchInput = event => {
+    if (event.key === 'Enter') {
+      this.getJobsData()
+    }
+  }
+
+  changeSalary = activeSalaryRangeId => {
+    this.setState({activeSalaryRangeId}, this.getJobsData)
+  }
+
+  changeEmployment = activeEmploymentTypeId => {
+    this.setState({activeEmploymentTypeId}, this.getJobsData)
   }
 
   renderJobsView = () => {
@@ -206,8 +227,13 @@ class AllJobsSection extends Component {
               className="input-search"
               value={searchInput}
               onChange={this.onChangeSearchInput}
+              onKeyDown={this.enterSearchInput}
             />
-            <button type="button" testid="searchButton">
+            <button
+              type="button"
+              testid="searchButton"
+              className="search-btn-icon"
+            >
               <BsSearch className="search-icon" />
             </button>
           </div>

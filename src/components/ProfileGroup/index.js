@@ -115,7 +115,7 @@ class ProfileGroup extends Component {
 
     return salaryRangesList.map(eachSalary => {
       const {changeSalary} = this.props
-      const changingSalaryRangeId = () => {
+      changingSalaryRangeId = () => {
         changeSalary(eachSalary.changingSalaryRangeId)
       }
 

@@ -35,8 +35,8 @@ class JobItemDetails extends Component {
     packagePerAnnum: data.package_per_annum,
     title: data.title,
     name: data.name,
-    imageUrl: data.image_url,
     description: data.description,
+    imageUrl: data.image_url,
   })
 
   getJobItemDetailsData = async () => {
@@ -68,8 +68,8 @@ class JobItemDetails extends Component {
       const updatedSimilarJobDetailsData = fetchedData.similar_jobs.map(
         eachJob => this.getFormattedData(eachJob),
       )
-      const leftAtCompanyData = this.getFormattedData(
-        fetchedData.left_at_company,
+      const lifeAtCompanyData = this.getFormattedData(
+        fetchedData.life_at_company,
       )
 
       const skillsUpdatedData = fetchedData.skills.map(eachSkill =>
@@ -78,7 +78,7 @@ class JobItemDetails extends Component {
       this.setState({
         jobItemDetails: updatedJobDetailsData,
         similarJobDetails: updatedSimilarJobDetailsData,
-        lifeAtCompany: leftAtCompanyData,
+        lifeAtCompany: lifeAtCompanyData,
         apiStatus: apiStatusConstants.success,
         skills: skillsUpdatedData,
       })
