@@ -9,7 +9,8 @@ import {Link} from 'react-router-dom'
 import './index.css'
 
 const JobCard = props => {
-  const {jobDetails} = props
+  const {aboutJob} = props
+
   const {
     companyLogoUrl,
     title,
@@ -19,7 +20,7 @@ const JobCard = props => {
     employmentType,
     packagePerAnnum,
     rating,
-  } = jobDetails
+  } = aboutJob
 
   return (
     <li className="job-card">
@@ -32,28 +33,30 @@ const JobCard = props => {
           />
           <div className="rating-job-container">
             <h1 className="title-job">{title}</h1>
-            <div>
-              <AiFillStar className="raring-color" />
+
+            <div className="rating-count-container">
+              <AiFillStar className="rating-color" />
               <span className="rating-count">{rating}</span>
             </div>
           </div>
-          <div className="package-location-employment-container">
-            <div className="location-company-type-container">
-              <div className="location">
-                <GoLocation className="location-icon-image" />
-                <p className="location-jobs">{location}</p>
-              </div>
-              <div className="company-type-container">
-                <BsFillBriefcaseFill className="bag-image" />
-                <p className="employment-type">{employmentType}</p>
-              </div>
-            </div>
-            <p className="lack-per-annum">{packagePerAnnum}</p>
-          </div>
-          <hr className="hr-line" />
-          <h1 className="description-heading">Description</h1>
-          <p className="job-card-description">{jobDescription}</p>
         </div>
+        <div className="package-location-employment-container">
+          <div className="location-company-type-container">
+            <div className="location">
+              <GoLocation className="location-icon-image" />
+              <p className="location-jobs">{location}</p>
+            </div>
+            <div className="company-type-container">
+              <BsFillBriefcaseFill className="bag-image" />
+              <p className="employment-type">{employmentType}</p>
+            </div>
+          </div>
+          <p className="lack-per-annum">{packagePerAnnum}</p>
+        </div>
+
+        <hr className="hr-line" />
+        <h1 className="description-heading">Description</h1>
+        <p className="job-card-description">{jobDescription}</p>
       </Link>
     </li>
   )

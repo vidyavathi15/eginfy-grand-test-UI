@@ -1,8 +1,14 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import Loader from 'react-loader-spinner'
+
+import {BsStar, BsBriefcase} from 'react-icons/bs'
+
 import {GoLocation} from 'react-icons/go'
-import {BsBriefcase} from 'react-icons/bs'
 import SimilarCard from '../SimilarCard'
+import SkillItem from '../SkillItem'
+
+import './index.css'
 
 const apiStatusConstants = {
   initial: 'INITIAL',
@@ -25,8 +31,8 @@ class JobItemDetails extends Component {
   }
 
   getFormattedData = data => ({
-    companyLogoUrl: data.companyLogoUrl,
-    companyWebsiteUrl: data.website_url,
+    companyLogoUrl: data.company_logo_url,
+    companyWebsiteUrl: data.company_website_url,
     jobDescription: data.job_description,
     location: data.location,
     rating: data.rating,
@@ -34,9 +40,6 @@ class JobItemDetails extends Component {
     id: data.id,
     packagePerAnnum: data.package_per_annum,
     title: data.title,
-    name: data.name,
-    description: data.description,
-    imageUrl: data.image_url,
   })
 
   getJobItemDetailsData = async () => {
@@ -58,29 +61,35 @@ class JobItemDetails extends Component {
     }
 
     const response = await fetch(jobDetailsApiUrl, options)
+    console.log(response)
 
     if (response.ok) {
       const fetchedData = await response.json()
 
-      const updatedJobDetailsData = this.getFormattedData(
-        fetchedData.job_details,
-      )
-      const updatedSimilarJobDetailsData = fetchedData.similar_jobs.map(
-        eachJob => this.getFormattedData(eachJob),
-      )
-      const lifeAtCompanyData = this.getFormattedData(
-        fetchedData.life_at_company,
-      )
+      const updatedJobDetailsData = {
+        jobItemDetailFetchedData: this.getFormattedData(
+          fetchedData.job_details,
+        ),
+        similarJobDetailsData: fetchedData.similar_jobs.map(eachJob =>
+          this.getFormattedData(eachJob),
+        ),
+        lifeAtCompany: {
+          description: fetchedData.life_at_company.description,
+          imageUrl: fetchedData.life_at_company.image_url,
+        },
 
-      const skillsUpdatedData = fetchedData.skills.map(eachSkill =>
-        this.getFormattedData(eachSkill),
-      )
+        skills: fetchedData.skills.map(eachSkill => ({
+          imageUrl: eachSkill.imageUrl,
+          name: eachSkill.name,
+        })),
+      }
+
       this.setState({
-        jobItemDetails: updatedJobDetailsData,
-        similarJobDetails: updatedSimilarJobDetailsData,
-        lifeAtCompany: lifeAtCompanyData,
+        jobItemDetails: updatedJobDetailsData.jobItemDetailFetchedData,
+        similarJobDetails: updatedJobDetailsData.similarJobDetailsData,
+        lifeAtCompany: updatedJobDetailsData.lifeAtCompany,
         apiStatus: apiStatusConstants.success,
-        skills: skillsUpdatedData,
+        skills: updatedJobDetailsData.skills,
       })
     }
   }
@@ -92,8 +101,12 @@ class JobItemDetails extends Component {
       lifeAtCompany,
       similarJobDetails,
     } = this.state
-    const {imageUrl, name} = skills
-    const {description} = lifeAtCompany
+
+    console.log(jobItemDetails)
+    console.log(skills)
+    console.log(lifeAtCompany)
+
+    const {description, imageUrl} = lifeAtCompany
 
     const {
       title,
@@ -103,23 +116,21 @@ class JobItemDetails extends Component {
       location,
       employmentType,
     } = jobItemDetails
+
     return (
       <div className="job-item-details-container">
         <div className="logo-rating-container">
           <img
-            src={this.componentDidCatch}
+            src={companyLogoUrl}
             alt="job details company logo"
             className="job-detail-logo"
           />
           <div className="title-rating-container">
             <h1 className="title-job-detail">{title}</h1>
             <div className="rating-container">
-              <img
-                src={companyLogoUrl}
-                className="job-details-company-logo"
-                alt="job details company logo"
-              />
-              <p className="rating">{rating}</p>
+              <BsStar className="bs-star-icon" />
+
+              <p className="detailed-rating">{rating}</p>
             </div>
           </div>
         </div>
@@ -134,33 +145,15 @@ class JobItemDetails extends Component {
           </div>
         </div>
         <hr className="hr-line" />
+        <p className="description-heading">Description</p>
         <p className="job-description">{jobDescription}</p>
         <div className="skills-container">
           <h1 className="skills-heading">Skills</h1>
-          <ul className="skill-list">{}</ul>
-          <div className="skill-name-container">
-            <img src={imageUrl} alt={name} className="skill-image" />
-            <p className="skill-name">{name}</p>
-          </div>
-
-          <div className="skill-name-container">
-            <img src={imageUrl} alt={name} className="skill-image" />
-            <p className="skill-name">{name}</p>
-          </div>
-
-          <div className="skill-name-container">
-            <img src={imageUrl} alt={name} className="skill-image" />
-            <p className="skill-name">{name}</p>
-          </div>
-
-          <div className="skill-name-container">
-            <img src={imageUrl} alt={name} className="skill-image" />
-            <p className="skill-name">{name}</p>
-          </div>
-          <div className="skill-name-container">
-            <img src={imageUrl} alt={name} className="skill-image" />
-            <p className="skill-name">{name}</p>
-          </div>
+          <ul className="skill-list">
+            {skills.map(each => (
+              <SkillItem key={jobItemDetails.id} skillDetails={each} />
+            ))}
+          </ul>
         </div>
         <div className="life-at-company">
           <h1 className="life-at-heading">Life at Company</h1>
@@ -178,6 +171,29 @@ class JobItemDetails extends Component {
       </div>
     )
   }
+
+  renderJobDetailsFailureView = () => (
+    <div className="failure-container">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+        className="failure-image"
+      />
+      <h1 className="failure-heading">Oops! Something Went Wrong</h1>
+      <p className="failure-description">
+        We cannot seem to find the page you are looking for
+      </p>
+      <button type="button" className="retry-btn">
+        Retry
+      </button>
+    </div>
+  )
+
+  renderLoadingView = () => (
+    <div className="loader-container" testid="loader">
+      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
+    </div>
+  )
 
   renderJobItemDetails = () => {
     const {apiStatus} = this.state

@@ -21,7 +21,7 @@
 
 @media screen and (min-width: 992px) {
   .form-container {
-    width: 350px;
+    width: 700px;
     flex-shrink: 0;
     padding: 64px 48px 64px 48px;
   }
@@ -41,6 +41,7 @@
 
 .website-logo-desktop-image {
   width: 180px;
+  margin-bottom: 50px;
 }
 @media screen and (max-width: 768px) {
   .website-logo-desktop-image {
@@ -92,6 +93,8 @@
   outline: none;
   padding: 8px 16px 8px 16px;
   background-color: transparent;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .password-input-field {
   font-size: 16px;

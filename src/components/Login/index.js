@@ -44,6 +44,10 @@ class Login extends Component {
     }
   }
 
+  onChangePassword = event => {
+    this.setState({password: event.target.value})
+  }
+
   renderPasswordField = () => {
     const {password} = this.state
     return (
@@ -53,7 +57,7 @@ class Login extends Component {
         </label>
         <input
           id="password"
-          type="text"
+          type="password"
           value={password}
           onChange={this.onChangePassword}
           placeholder="password"
@@ -61,6 +65,10 @@ class Login extends Component {
         />
       </>
     )
+  }
+
+  onChangeUsername = event => {
+    this.setState({username: event.target.value})
   }
 
   renderUsernameField = () => {
@@ -102,7 +110,7 @@ class Login extends Component {
           />
           <div>{this.renderUsernameField()}</div>
           <div>{this.renderPasswordField()}</div>
-          <button type="button" className="login-button">
+          <button type="submit" className="login-button">
             Login
           </button>
           {showSubmitError && <p className="err-r-msg">{errorMsg}</p>}

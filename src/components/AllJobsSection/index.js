@@ -64,6 +64,10 @@ class AllJobsSection extends Component {
     searchInput: '',
   }
 
+  componentDidMount() {
+    this.getJobsData()
+  }
+
   onChangeSearchInput = event => {
     this.setState({searchInput: event.target.value})
   }
@@ -79,6 +83,7 @@ class AllJobsSection extends Component {
     packagePerAnnum: data.package_per_annum,
     rating: data.rating,
     title: data.title,
+    total: data.total,
   })
 
   getJobsData = async () => {
@@ -90,6 +95,7 @@ class AllJobsSection extends Component {
       searchInput,
     } = this.state
     const jwtToken = Cookies.get('jwt_token')
+
     const allJobsApiUrl = `https://apis.ccbp.in/jobs?employment_type=${activeEmploymentTypeId}&minimum_package=${activeSalaryRangeId}&search=${searchInput}`
 
     const options = {
@@ -110,7 +116,7 @@ class AllJobsSection extends Component {
       }
 
       this.setState({
-        jobsData: updatedData,
+        jobsData: updatedData.jobs,
         apiStatus: apiStatusConstants.success,
       })
     }
@@ -132,13 +138,14 @@ class AllJobsSection extends Component {
 
   renderJobsView = () => {
     const {jobsData} = this.state
+
     const shouldShowJobsList = jobsData.length > 0
 
     return shouldShowJobsList ? (
       <div className="total-list-f-jobs-container">
         <ul className="jobs-unordered-list">
           {jobsData.map(eachJob => (
-            <JobCard key={eachJob.id} jobDetails={eachJob} />
+            <JobCard key={eachJob.id} aboutJob={eachJob} />
           ))}
         </ul>
       </div>
@@ -151,7 +158,7 @@ class AllJobsSection extends Component {
         />
         <h1 className="no-job-heading">No Jobs Found</h1>
         <p className="no-job-description">
-          We could find any Jobs, Try others filters
+          We could not find any Jobs, Try others filters
         </p>
       </div>
     )
@@ -210,14 +217,12 @@ class AllJobsSection extends Component {
       <div className="all-jobs-section-container">
         <div className="profile-container">
           <ProfileGroup
-            searchInput={searchInput}
             activeEmploymentTypeId={activeEmploymentTypeId}
             activeSalaryRangeId={activeSalaryRangeId}
             employmentTypesList={employmentTypesList}
             salaryRangesList={salaryRangesList}
             changeSalary={this.changeSalary}
             changeEmployment={this.changeEmployment}
-            onChangeSearchInput={this.onChangeSearchInput}
           />
         </div>
         <div className="search-and-jobs-list-container">

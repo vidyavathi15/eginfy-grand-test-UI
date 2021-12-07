@@ -36,7 +36,7 @@ class ProfileGroup extends Component {
     const jwtToken = Cookies.get('jwt_token')
 
     const options = {
-      header: {
+      headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
       method: 'GET',
@@ -46,6 +46,7 @@ class ProfileGroup extends Component {
 
     if (response.ok) {
       const fetchedData = await response.json()
+
       const updatedProfileData = this.getFormattedData(
         fetchedData.profile_details,
       )
@@ -62,12 +63,12 @@ class ProfileGroup extends Component {
 
   renderProfile = () => {
     const {profileData} = this.state
-    const {name, description, profileImageUrl} = profileData
+    const {name, shortBio, profileImageUrl} = profileData
     return (
       <div className="profile-details-container">
         <img src={profileImageUrl} alt="profile" className="profile-image" />
         <h1 className="name-profile">{name}</h1>
-        <p className="profile-details-description">{description}</p>
+        <p className="profile-details-description">{shortBio}</p>
       </div>
     )
   }
@@ -115,14 +116,18 @@ class ProfileGroup extends Component {
 
     return salaryRangesList.map(eachSalary => {
       const {changeSalary} = this.props
-      changingSalaryRangeId = () => {
-        changeSalary(eachSalary.changingSalaryRangeId)
+      const changingSalaryRangeId = () => {
+        changeSalary(eachSalary.salaryRangeId)
       }
 
       return (
-        <li className="salary-range-item" onClick={this.changingSalaryRangeId}>
+        <li
+          className="salary-range-item"
+          key={eachSalary.salaryRangeId}
+          onClick={changingSalaryRangeId}
+        >
           <input type="checkbox" id="fullTime" className="checkbox-input" />
-          <label htmlFr="fullTime" className="checkbox-label">
+          <label htmlFor="fullTime" className="checkbox-label">
             {eachSalary.label}
           </label>
         </li>
@@ -145,17 +150,18 @@ class ProfileGroup extends Component {
     return employmentTypesList.map(eachEmployment => {
       const {changeEmployment} = this.props
 
-      changeEmploymentType = () => {
+      const changeEmploymentType = () => {
         changeEmployment(eachEmployment.employmentTypeId)
       }
 
       return (
         <li
           className="employment-type-item"
-          onClick={this.changeEmploymentType}
+          key={eachEmployment.employmentTypeId}
+          onClick={changeEmploymentType}
         >
           <input type="checkbox" id="fullTime" className="checkbox-input" />
-          <label htmlFr="fullTime" className="checkbox-label">
+          <label htmlFor="fullTime" className="checkbox-label">
             {eachEmployment.label}
           </label>
         </li>
@@ -164,12 +170,12 @@ class ProfileGroup extends Component {
   }
 
   renderTypeEmployment = () => (
-    <>
+    <div>
       <h1 className="employment-category">Type of Employment</h1>
       <ul className="employment-type-total-list">
         {this.renderEmploymentCategoryList()}
       </ul>
-    </>
+    </div>
   )
 
   render() {

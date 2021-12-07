@@ -1,0 +1,13 @@
+.skill-item-container {
+  list-style-type: none;
+}
+.skill-image {
+  height: 30px;
+  width: 30px;
+}
+.skill-name {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Roboto';
+}

@@ -9,6 +9,9 @@
   justify-content: center;
   align-items: center;
   width: 30%;
+  border-radius: 8px;
+  padding: 20px;
+  background-size: cover;
 }
 .profile-image {
   height: 20px;
@@ -75,8 +78,7 @@
 .employment-type-total-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
   list-style-type: none;
   padding-left: 0px;
   margin: 0px;
@@ -105,8 +107,7 @@
 .salary-range-total-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
   list-style-type: none;
   padding-left: 0px;
   margin: 0px;
