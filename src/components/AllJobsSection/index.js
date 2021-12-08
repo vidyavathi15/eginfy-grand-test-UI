@@ -158,10 +158,14 @@ class AllJobsSection extends Component {
         />
         <h1 className="no-job-heading">No Jobs Found</h1>
         <p className="no-job-description">
-          We could not find any Jobs, Try others filters
+          We could not find any jobs. Try other filters
         </p>
       </div>
     )
+  }
+
+  onClickRetry = () => {
+    this.getJobsData()
   }
 
   renderFailureView = () => (
@@ -175,7 +179,8 @@ class AllJobsSection extends Component {
       <p className="failure-description">
         We cannot seem to find the page you are looking for
       </p>
-      <button type="button" className="retry-btn">
+
+      <button type="button" className="retry-btn" onClick={this.onClickRetry}>
         Retry
       </button>
     </div>

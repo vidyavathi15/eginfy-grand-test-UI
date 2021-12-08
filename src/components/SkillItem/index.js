@@ -5,7 +5,7 @@ const SkillItem = props => {
   const {name, imageUrl} = skillDetails
 
   return (
-    <li className="skill-item-container">
+    <li className="skill-item">
       <img src={imageUrl} alt={name} className="skill-image" />
       <p className="skill-name">{name}</p>
     </li>

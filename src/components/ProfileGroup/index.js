@@ -73,21 +73,18 @@ class ProfileGroup extends Component {
     )
   }
 
+  onClickFailureRetryProfileButton = () => {
+    this.getProfileData()
+  }
+
   renderFailure = () => (
-    <div className="failure-profile-container">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
-        alt="failure view "
-        className="failure-profile-img"
-      />
-      <h1 className="failure-profile-text">Oops Something Went Wrong </h1>
-      <p className="failure-profile-description-txt">
-        We cannot seem to find the page you are looking for
-      </p>
-      <button type="button" className="retry-btn">
-        Retry
-      </button>
-    </div>
+    <button
+      type="button"
+      className="retry-btn"
+      onClick={this.onClickFailureRetryProfileButton}
+    >
+      Retry
+    </button>
   )
 
   renderLoading = () => (
@@ -137,7 +134,7 @@ class ProfileGroup extends Component {
 
   renderSalaryRange = () => (
     <>
-      <h1 className="salary-category">Type of Employment</h1>
+      <h1 className="salary-category">Salary Range</h1>
       <ul className="salary-range-total-list">
         {this.renderSalaryRangeList()}
       </ul>

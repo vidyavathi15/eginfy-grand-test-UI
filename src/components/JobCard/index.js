@@ -36,7 +36,7 @@ const JobCard = props => {
 
             <div className="rating-count-container">
               <AiFillStar className="rating-color" />
-              <span className="rating-count">{rating}</span>
+              <p className="rating-count">{rating}</p>
             </div>
           </div>
         </div>

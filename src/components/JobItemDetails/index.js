@@ -62,6 +62,7 @@ class JobItemDetails extends Component {
     }
 
     const response = await fetch(jobDetailsApiUrl, options)
+    console.log(response)
 
     if (response.ok) {
       const fetchedData = await response.json()
@@ -71,8 +72,8 @@ class JobItemDetails extends Component {
           fetchedData.job_details,
         ),
 
-        similarJobDetailsData: fetchedData.job_details.similar_jobs.map(
-          eachSimilar => this.getFormattedData(eachSimilar),
+        similarJobDetailsData: fetchedData.similar_jobs.map(eachSimilar =>
+          this.getFormattedData(eachSimilar),
         ),
 
         lifeAtCompany: {
@@ -81,7 +82,7 @@ class JobItemDetails extends Component {
         },
 
         skills: fetchedData.job_details.skills.map(eachSkill => ({
-          imageUrl: eachSkill.imageUrl,
+          imageUrl: eachSkill.image_url,
           name: eachSkill.name,
         })),
       }
@@ -147,7 +148,7 @@ class JobItemDetails extends Component {
         </div>
         <hr className="hr-line" />
         <div className="link-description-container">
-          <p className="description-heading">Description</p>
+          <h1 className="description-heading">Description</h1>
 
           <a className="link-url" href={companyWebsiteUrl}>
             Visit
@@ -170,7 +171,7 @@ class JobItemDetails extends Component {
         <h1 className="life-at-heading">Life at Company</h1>
         <div className="life-at-company">
           <p className="life-at-description">{description}</p>
-          <img src={imageUrl} alt="left at company" className="lift-at-image" />
+          <img src={imageUrl} alt="life at company" className="lift-at-image" />
         </div>
         <div className="similar-jobs-container">
           <h1 className="similar-jobs-heading">Similar Jobs</h1>
