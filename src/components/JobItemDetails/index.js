@@ -1,8 +1,9 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
-
-import {BsStar, BsBriefcase} from 'react-icons/bs'
+import {AiFillStar} from 'react-icons/ai'
+import {BsBriefcase} from 'react-icons/bs'
+import {FiExternalLink} from 'react-icons/fi'
 
 import {GoLocation} from 'react-icons/go'
 import SimilarCard from '../SimilarCard'
@@ -61,7 +62,6 @@ class JobItemDetails extends Component {
     }
 
     const response = await fetch(jobDetailsApiUrl, options)
-    console.log(response)
 
     if (response.ok) {
       const fetchedData = await response.json()
@@ -70,15 +70,17 @@ class JobItemDetails extends Component {
         jobItemDetailFetchedData: this.getFormattedData(
           fetchedData.job_details,
         ),
-        similarJobDetailsData: fetchedData.similar_jobs.map(eachJob =>
-          this.getFormattedData(eachJob),
+
+        similarJobDetailsData: fetchedData.job_details.similar_jobs.map(
+          eachSimilar => this.getFormattedData(eachSimilar),
         ),
+
         lifeAtCompany: {
-          description: fetchedData.life_at_company.description,
-          imageUrl: fetchedData.life_at_company.image_url,
+          description: fetchedData.job_details.life_at_company.description,
+          imageUrl: fetchedData.job_details.life_at_company.image_url,
         },
 
-        skills: fetchedData.skills.map(eachSkill => ({
+        skills: fetchedData.job_details.skills.map(eachSkill => ({
           imageUrl: eachSkill.imageUrl,
           name: eachSkill.name,
         })),
@@ -102,9 +104,7 @@ class JobItemDetails extends Component {
       similarJobDetails,
     } = this.state
 
-    console.log(jobItemDetails)
-    console.log(skills)
-    console.log(lifeAtCompany)
+    console.log(similarJobDetails)
 
     const {description, imageUrl} = lifeAtCompany
 
@@ -115,6 +115,7 @@ class JobItemDetails extends Component {
       companyLogoUrl,
       location,
       employmentType,
+      companyWebsiteUrl,
     } = jobItemDetails
 
     return (
@@ -128,7 +129,7 @@ class JobItemDetails extends Component {
           <div className="title-rating-container">
             <h1 className="title-job-detail">{title}</h1>
             <div className="rating-container">
-              <BsStar className="bs-star-icon" />
+              <AiFillStar className="rating-color" />
 
               <p className="detailed-rating">{rating}</p>
             </div>
@@ -145,7 +146,17 @@ class JobItemDetails extends Component {
           </div>
         </div>
         <hr className="hr-line" />
-        <p className="description-heading">Description</p>
+        <div className="link-description-container">
+          <p className="description-heading">Description</p>
+
+          <a className="link-url" href={companyWebsiteUrl}>
+            Visit
+            <span className="tick-icon">
+              <FiExternalLink />
+            </span>
+          </a>
+        </div>
+
         <p className="job-description">{jobDescription}</p>
         <div className="skills-container">
           <h1 className="skills-heading">Skills</h1>
@@ -155,8 +166,9 @@ class JobItemDetails extends Component {
             ))}
           </ul>
         </div>
+
+        <h1 className="life-at-heading">Life at Company</h1>
         <div className="life-at-company">
-          <h1 className="life-at-heading">Life at Company</h1>
           <p className="life-at-description">{description}</p>
           <img src={imageUrl} alt="left at company" className="lift-at-image" />
         </div>
@@ -164,7 +176,7 @@ class JobItemDetails extends Component {
           <h1 className="similar-jobs-heading">Similar Jobs</h1>
           <ul className="similar-jobs-list">
             {similarJobDetails.map(eachSimilar => (
-              <SimilarCard key={eachSimilar.id} similarJobs={eachSimilar} />
+              <SimilarCard key={eachSimilar.id} similarDetails={eachSimilar} />
             ))}
           </ul>
         </div>

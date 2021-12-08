@@ -1,11 +1,11 @@
-import {BsStar} from 'react-icons/bs'
+import {AiFillStar} from 'react-icons/ai'
 
 const SimilarCard = props => {
-  const {similarJobDetails} = props
+  const {similarDetails} = props
 
-  const {title, companyLogoUrl, jobDescription, rating} = similarJobDetails
+  const {title, companyLogoUrl, jobDescription, rating} = similarDetails
   return (
-    <div className="similar-card-container">
+    <li className="similar-card-container">
       <div className="logo-title-container-similar">
         <img
           src={companyLogoUrl}
@@ -15,14 +15,14 @@ const SimilarCard = props => {
         <div className="title-container">
           <h1 className="similar-title">{title}</h1>
           <div className="similar-rating">
-            <BsStar className="star-icon" />
+            <AiFillStar className="rating-color" />
             <p className="rating-similar">{rating}</p>
           </div>
         </div>
       </div>
       <h1 className="similar-card-description">Description</h1>
       <p className="description">{jobDescription}</p>
-    </div>
+    </li>
   )
 }
 

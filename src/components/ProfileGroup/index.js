@@ -126,7 +126,7 @@ class ProfileGroup extends Component {
           key={eachSalary.salaryRangeId}
           onClick={changingSalaryRangeId}
         >
-          <input type="checkbox" id="fullTime" className="checkbox-input" />
+          <input type="radio" id="fullTime" className="radio-input" />
           <label htmlFor="fullTime" className="checkbox-label">
             {eachSalary.label}
           </label>
