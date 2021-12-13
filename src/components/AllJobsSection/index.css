@@ -13,10 +13,10 @@
   }
 }
 .profile-container {
-  width: 50%;
+  width: 40%;
 }
 .search-and-jobs-list-container {
-  width: 50%;
+  width: 60%;
 }
 .search-container {
   display: flex;

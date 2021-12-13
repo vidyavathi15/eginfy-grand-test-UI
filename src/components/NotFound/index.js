@@ -7,9 +7,9 @@ const NotFound = () => (
       alt="not found"
       className="not-found-image"
     />
-    <p className="not-found-description">Page Not Found</p>
+    <h1 className="not-found-description">Page Not Found</h1>
     <p className="not-found-details-message">
-      we are sorry, the page you requested could not be found.
+      we &apos re sorry, the page you requested could not be found.
     </p>
   </div>
 )

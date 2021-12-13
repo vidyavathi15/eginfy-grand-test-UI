@@ -62,7 +62,6 @@ class JobItemDetails extends Component {
     }
 
     const response = await fetch(jobDetailsApiUrl, options)
-    console.log(response)
 
     if (response.ok) {
       const fetchedData = await response.json()
@@ -72,7 +71,7 @@ class JobItemDetails extends Component {
           fetchedData.job_details,
         ),
 
-        similarJobDetailsData: fetchedData.similar_jobs.map(eachSimilar =>
+        similarJobFetchedData: fetchedData.similar_jobs.map(eachSimilar =>
           this.getFormattedData(eachSimilar),
         ),
 
@@ -89,7 +88,7 @@ class JobItemDetails extends Component {
 
       this.setState({
         jobItemDetails: updatedJobDetailsData.jobItemDetailFetchedData,
-        similarJobDetails: updatedJobDetailsData.similarJobDetailsData,
+        similarJobDetails: updatedJobDetailsData.similarJobFetchedData,
         lifeAtCompany: updatedJobDetailsData.lifeAtCompany,
         apiStatus: apiStatusConstants.success,
         skills: updatedJobDetailsData.skills,
@@ -163,7 +162,7 @@ class JobItemDetails extends Component {
           <h1 className="skills-heading">Skills</h1>
           <ul className="skill-list">
             {skills.map(each => (
-              <SkillItem key={jobItemDetails.id} skillDetails={each} />
+              <SkillItem key={each.name} skillDetails={each} />
             ))}
           </ul>
         </div>

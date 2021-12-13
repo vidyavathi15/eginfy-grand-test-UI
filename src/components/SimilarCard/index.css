@@ -1,14 +1,18 @@
-.similar-card-container {
+.similar-card-item {
   border-radius: 8px;
   padding: 20px;
   margin-top: 20px;
-  width: 50px;
-  background-color: #475569;
+  width: 50%;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  background-color: red;
 }
 
 @media screen and (min-width: 768px) {
   .similar-card-container {
-    width: 30px;
+    width: 30%;
   }
 }
 

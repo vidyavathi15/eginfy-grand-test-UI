@@ -4,8 +4,9 @@ const SimilarCard = props => {
   const {similarDetails} = props
 
   const {title, companyLogoUrl, jobDescription, rating} = similarDetails
+
   return (
-    <li className="similar-card-container">
+    <li className="similar-card-item">
       <div className="logo-title-container-similar">
         <img
           src={companyLogoUrl}
