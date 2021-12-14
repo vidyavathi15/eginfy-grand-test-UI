@@ -2,20 +2,20 @@
   background-color: #000000;
 
   padding-top: 30px;
-  width: 100%;
+
   min-height: 100vh;
 }
 @media screen and (min-width: 768px) {
   .all-jobs-section-container {
     display: flex;
-
-    justify-content: space-between;
   }
 }
 .profile-container {
+  margin-top: 30px;
   width: 40%;
 }
 .search-and-jobs-list-container {
+  margin-top: 10px;
   width: 60%;
 }
 .search-container {
@@ -24,6 +24,7 @@
   border: 1px solid #ffffff;
   border-radius: 6px;
   width: 100%;
+
   margin-right: 20px;
 }
 .input-search {
@@ -46,6 +47,7 @@
   background-color: #202020;
   height: 30px;
   width: 30px;
+  margin-right: 20px;
 
   outline: none;
 }

@@ -238,6 +238,7 @@ class AllJobsSection extends Component {
               value={searchInput}
               onChange={this.onChangeSearchInput}
               onKeyDown={this.enterSearchInput}
+              placeholder="Search"
             />
             <button
               type="button"
