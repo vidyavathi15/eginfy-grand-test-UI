@@ -1,0 +1,39 @@
+.pagination-container {
+  display: flex;
+  align-items: center;
+}
+
+.delete-selected-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: crimson;
+  color: #ffffff;
+  font-size: 15px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  border-radius: 20px;
+  padding: 10px;
+}
+.pagination-icon-controls {
+  list-style-type: none;
+  display: flex;
+  padding-left: 0px;
+
+  justify-content: space-around;
+  margin-top: 0px;
+  width: 60vw;
+}
+
+.page-button {
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  font-family: 'Roboto';
+  padding: 12px;
+  height: 50px;
+  width: 50px;
+  font-weight: 600;
+  border-radius: 40%;
+}
