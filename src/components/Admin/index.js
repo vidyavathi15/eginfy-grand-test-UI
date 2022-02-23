@@ -183,7 +183,6 @@ class Admin extends Component {
 
   renderAdminSuccessView = () => {
     const {usersList, pagesCount, selectedAll} = this.state
-    console.log(selectedAll)
 
     const searchResults = this.getSearchResults()
     const currentPageUsers = this.getCurrentPageUsers(searchResults)
@@ -299,7 +298,7 @@ class Admin extends Component {
             value={searchInput}
             className="search-input"
             onChange={this.onChangeSearchInput}
-            placeholder="Search by name or email or role"
+            placeholder="Search by name, email or role"
           />
         </div>
         {this.renderViews()}
