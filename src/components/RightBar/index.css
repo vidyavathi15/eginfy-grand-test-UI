@@ -1,0 +1,92 @@
+.right-bar-bg-container {
+  display: flex;
+  flex-direction: column;
+}
+.clock-timer-container {
+  display: flex;
+  align-items: center;
+}
+.timer-count {
+  color: black;
+  font-size: 14px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.boxes-options {
+  display: flex;
+  flex-direction: column;
+}
+.answer-color {
+  display: flex;
+}
+.answer-right-bar {
+  background-color: blue;
+  padding: 5px;
+  color: white;
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.answer-right-text {
+  color: blue;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.not-answer-right-bar {
+  background-color: grey;
+  padding: 5px;
+  color: white;
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.not-answer-right-text {
+  color: grey;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.marked-answer-right-bar {
+  background-color: yellow;
+  padding: 5px;
+  color: white;
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.marked-answer-right-text {
+  color: yellow;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.not-answer-marked-review-right-text {
+  color: red;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.not-not-marked-answer-right-bar {
+  color: red;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.all-option-boxes {
+  display: flex;
+  overflow: auto;
+}
+.options-right-nbr {
+  background-color: grey;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Roboto';
+  padding: 5px;
+  border-radius: 4px;
+}
+.options-right-nbr1 {
+  background-color: blue;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Roboto';
+  padding: 5px;
+  border-radius: 4px;
+}

@@ -1,0 +1,189 @@
+.home-bg-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.test-details-container {
+  display: flex;
+  justify-content: space-between;
+}
+.text-name {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  color: crimson;
+}
+.date-container {
+  display: flex;
+  align-items: center;
+}
+.date {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  color: black;
+}
+.total-time-marks-container {
+  display: flex;
+  justify-content: space-between;
+}
+.total-details--abut-question {
+  display: flex;
+}
+.question-container {
+  display: flex;
+  flex-direction: column;
+}
+.number-of-questions {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  color: black;
+}
+.marked-or-unmarked {
+  display: flex;
+  flex-direction: column;
+}
+.total_marks {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  color: black;
+}
+.total-time {
+  display: flex;
+  flex-direction: column;
+}
+.total-time-minutes {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  color: black;
+}
+.pattern-container {
+  list-style-type: none;
+  padding-left: 0px;
+  margin: 0px;
+}
+.syllabus-of-test {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  color: black;
+}
+.check-box-container {
+  display: flex;
+  justify-content: space-between;
+}
+.terms-container {
+  display: flex;
+  align-items: center;
+}
+.about-checkbox {
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+  color: black;
+}
+.start-test-button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.single-answer-type {
+  display: flex;
+  flex-direction: column;
+}
+.single-answer-heading {
+  color: black;
+  font-size: 16px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.correct-name {
+  color: black;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.maths-bg-container {
+  display: flex;
+  flex-direction: column;
+}
+.book-container {
+  display: flex;
+  align-items: center;
+}
+.maths-text {
+  color: black;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+
+.radio-box-book {
+  display: flex;
+}
+.Quadratic {
+  color: black;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.instructions-bg-details {
+  display: flex;
+  flex-direction: column;
+}
+.instructions-heading {
+  color: green;
+  font-size: 13px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.order-instruction {
+  padding: 2px;
+}
+.instruct-1 {
+  color: black;
+  font-size: 13px;
+  font-family: 'Roboto';
+}
+.select-test {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.start-test-button {
+  cursor: pointer;
+  outline: none;
+
+  font-weight: 800;
+  border: none;
+  border-radius: 6px;
+  color: black;
+}
+.active-test-class-name {
+  cursor: pointer;
+  outline: none;
+  background-color: crimson;
+  font-weight: 800;
+  border: none;
+  border-radius: 6px;
+  color: white;
+}
+.hidden-test-class-name {
+  cursor: pointer;
+  outline: none;
+  background-color: crimson;
+  outline-offset: 4;
+  font-weight: 800;
+  border: none;
+  border-radius: 6px;
+  color: white;
+}
+.link-text {
+  text-decoration: none;
+}

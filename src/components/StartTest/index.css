@@ -1,0 +1,55 @@
+.start-test-bg-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-test-container {
+  display: flex;
+  align-items: center;
+}
+.name {
+  color: black;
+  font-size: 14px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.submit-btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.answer-type-review {
+  display: flex;
+  justify-content: space-between;
+}
+.question-nbr {
+  display: flex;
+  align-items: center;
+}
+.question-box {
+  border-radius: 4px;
+  color: white;
+  background-color: crimson;
+  padding: 5px;
+}
+.single-test-top-head {
+  color: black;
+  font-size: 14px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.review-container {
+  display: flex;
+  align-items: center;
+}
+.review-text {
+  color: black;
+  font-size: 14px;
+  font-family: 'Roboto';
+  font-weight: 800;
+}
+.questions-display-list {
+  padding: 2px;
+}
